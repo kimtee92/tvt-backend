@@ -20,7 +20,8 @@ app.use('/drivers', require('./drivers/drivers.controller'));
 app.use(errorHandler);
 
 // start server
-const port = process.env.NODE_ENV === 'production' ? 80 : 3000;
-const server = app.listen(port, function () {
-    console.log('Server listening on port ' + port);
+app.set('port', (process.env.PORT || 3000));
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
 });
