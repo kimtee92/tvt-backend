@@ -1,0 +1,4 @@
+﻿{
+    "connectionString": "mongodb://localhost/tvt-backend",
+    "secret": "tvt"
+}
