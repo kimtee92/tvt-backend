@@ -10,7 +10,8 @@ function jwt() {
         path: [
             // public routes that don't require authentication
             // '/users/authenticate',
-            '/drivers/register'
+            '/drivers/register',
+            '/drivers/authenticate'
         ]
     });
 }

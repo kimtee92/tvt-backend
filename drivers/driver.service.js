@@ -13,8 +13,8 @@ module.exports = {
     delete: _delete
 };
 
-async function authenticate({ drivername, password }) {
-    const driver = await Driver.findOne({ drivername });
+async function authenticate({ username, password }) {
+    const driver = await Driver.findOne({ username });
     if (driver && bcrypt.compareSync(password, driver.hash)) {
         const { hash, ...driverWithoutHash } = driver.toObject();
         const token = jwt.sign({ sub: driver.id }, config.secret);
