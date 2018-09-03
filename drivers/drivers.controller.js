@@ -14,7 +14,6 @@ router.delete('/:id', _delete);
 module.exports = router;
 
 function authenticate(req, res, next) {
-    console.log("in login");
     driverService.authenticate(req.body)
         .then(driver => driver ? res.json(driver) : res.status(400).json({ message: 'Username or password is incorrect' }))
         .catch(err => next(err));
