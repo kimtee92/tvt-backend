@@ -1,4 +1,4 @@
 ﻿{
-    "connectionString": "mongodb://tvt:TD5ALYKM5qym4RNZ@cluster0-shard-00-00-joljt.mongodb.net:27017,cluster0-shard-00-01-joljt.mongodb.net:27017,cluster0-shard-00-02-joljt.mongodb.net:27017/tvt?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true",
+    "connectionString": "mongodb://tvt:05d5NwwrdmlwfsNc@tvt-dev-shard-00-00-qqvbq.mongodb.net:27017,tvt-dev-shard-00-01-qqvbq.mongodb.net:27017,tvt-dev-shard-00-02-qqvbq.mongodb.net:27017/test?ssl=true&replicaSet=tvt-dev-shard-0&authSource=admin&retryWrites=true",
     "secret": "tvt"
 }
