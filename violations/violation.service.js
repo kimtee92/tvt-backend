@@ -21,7 +21,7 @@ async function getById(id) {
 }
 
 async function getByLicense(ViolationParam) {
-    return await Violation.find({ licenseNo: ViolationParam}).select('-hash');
+    return await Violation.find({ licenseNo: ViolationParam, settled: false});
 }
 
 async function create(ViolationParam) {

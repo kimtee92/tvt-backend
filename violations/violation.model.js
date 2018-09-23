@@ -7,6 +7,7 @@ const schema = new Schema({
     enforcerId: { type: String, required: true },
     fine: Schema.Types.Decimal128,   
     remarks: { type: String, required: false }, 
+    settled: Schema.Types.Boolean, 
     createdDate: { type: Date, default: Date.now }
 });
 
