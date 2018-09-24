@@ -7,6 +7,7 @@ router.get('/', getAll);
 router.get('/:id', getById);
 router.get('/view/:ViolationParam', getByLicense);
 router.put('/:id', update);
+router.delete('/deletebyid/:id', _delete);
 
 module.exports = router;
 
@@ -36,6 +37,12 @@ function getAll(req, res, next) {
 
 function update(req, res, next) {
     violationService.update(req.params.id, req.body)
+        .then(() => res.json({}))
+        .catch(err => next(err));
+}
+
+function _delete(req, res, next) {
+    violationService._delete(req.params.id)
         .then(() => res.json({}))
         .catch(err => next(err));
 }

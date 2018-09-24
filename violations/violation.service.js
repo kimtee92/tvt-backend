@@ -9,7 +9,8 @@ module.exports = {
     getById,
     getByLicense,
     create,
-    update
+    update,
+    _delete
 };
 
 async function getAll() {
@@ -40,4 +41,9 @@ async function update(id, ViolationParam) {
     Object.assign(Violation, ViolationParam);
 
     await Violation.save();
+}
+
+async function _delete(id) {
+    var res = id.split(",");
+    await Violation.updateMany({ _id: { $in : res }}, { $set: { settled: true }});
 }
