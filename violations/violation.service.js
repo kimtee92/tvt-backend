@@ -8,9 +8,10 @@ module.exports = {
     getAll,
     getById,
     getByLicense,
+    getByLicenseAll,
     create,
     update,
-    _delete
+    pay
 };
 
 async function getAll() {
@@ -23,6 +24,10 @@ async function getById(id) {
 
 async function getByLicense(ViolationParam) {
     return await Violation.find({ licenseNo: ViolationParam, settled: false});
+}
+
+async function getByLicenseAll(driverParam) {
+    return await Violation.find({ licenseNo: driverParam });
 }
 
 async function create(ViolationParam) {
@@ -43,7 +48,7 @@ async function update(id, ViolationParam) {
     await Violation.save();
 }
 
-async function _delete(id) {
+async function pay(id) {
     var res = id.split(",");
     await Violation.updateMany({ _id: { $in : res }}, { $set: { settled: true }});
 }

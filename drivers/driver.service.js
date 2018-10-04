@@ -8,6 +8,7 @@ module.exports = {
     authenticate,
     getAll,
     getById,
+    getDriver,
     create,
     update,
     delete: _delete
@@ -31,6 +32,10 @@ async function getAll() {
 
 async function getById(id) {
     return await Driver.findById(id).select('-hash');
+}
+
+async function getDriver(num) {
+    return await Driver.findOne({ licenseNo: num });
 }
 
 async function create(driverParam) {

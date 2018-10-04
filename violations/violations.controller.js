@@ -6,8 +6,9 @@ const violationService = require('./violation.service');
 router.get('/', getAll);
 router.get('/:id', getById);
 router.get('/view/:ViolationParam', getByLicense);
+router.get('/history/:driverParam', getByLicenseAll);
 router.put('/:id', update);
-router.delete('/deletebyid/:id', _delete);
+router.delete('/paybyid/:id', pay);
 
 module.exports = router;
 
@@ -29,6 +30,12 @@ function getByLicense(req, res, next) {
         .catch(err => next(err));
 }
 
+function getByLicenseAll(req, res, next) {
+    violationService.getByLicenseAll(req.params.driverParam)
+        .then(history => history ? res.json(history) : res.sendStatus(404))
+        .catch(err => next(err));
+}
+
 function getAll(req, res, next) {
     violationService.getAll()
         .then(drivers => res.json(drivers))
@@ -41,8 +48,8 @@ function update(req, res, next) {
         .catch(err => next(err));
 }
 
-function _delete(req, res, next) {
-    violationService._delete(req.params.id)
+function pay(req, res, next) {
+    violationService.pay(req.params.id)
         .then(() => res.json({}))
         .catch(err => next(err));
 }

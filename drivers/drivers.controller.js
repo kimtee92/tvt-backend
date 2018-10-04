@@ -6,6 +6,7 @@ const driverService = require('./driver.service');
 router.post('/authenticate', authenticate);
 router.post('/register', register);
 router.get('/', getAll);
+router.get('/driver/:num', getDriver);
 router.get('/:id', getById);
 router.get('/current', getCurrent);
 router.put('/:id', update);
@@ -27,6 +28,12 @@ function register(req, res, next) {
 
 function getById(req, res, next) {
     driverService.getById(req.params.id)
+        .then(driver => driver ? res.json(driver) : res.sendStatus(404))
+        .catch(err => next(err));
+}
+
+function getDriver(req, res, next) {
+    driverService.getDriver(req.params.num)
         .then(driver => driver ? res.json(driver) : res.sendStatus(404))
         .catch(err => next(err));
 }
