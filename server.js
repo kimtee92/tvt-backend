@@ -12,11 +12,11 @@ app.use(cors());
 
 //put headers for cors
 app.use(function (req, res, next) {
-  // var allowedOrigins = ['https://tvt-driver.herokuapp.com', 'https://tvt-enforcer.herokuapp.com'];
-  // var origin = req.headers.origin;
-  // if (allowedOrigins.indexOf(origin) > -1) {
-  //   res.header('Access-Control-Allow-Origin', origin);
-  // }
+  var allowedOrigins = ['https://tvt-driver.herokuapp.com', 'https://tvt-enforcer.herokuapp.com'];
+  var origin = req.headers.origin;
+  if (allowedOrigins.indexOf(origin) > -1) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
   //res.header("Access-Control-Allow-Origin", "*");
   res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
