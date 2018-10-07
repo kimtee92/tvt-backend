@@ -8,7 +8,7 @@ router.get('/:id', getById);
 router.get('/view/:ViolationParam', getByLicense);
 router.get('/history/:driverParam', getByLicenseAll);
 router.put('/:id', update);
-router.delete('/paybyid/:id', pay);
+router.get('/paybyid/:id', pay);
 
 module.exports = router;
 

@@ -68,8 +68,8 @@ async function update(id, driverParam) {
 
     // validate
     if (!driver) throw 'Driver not found';
-    if (driver.drivername !== driverParam.drivername && await Driver.findOne({ drivername: driverParam.drivername })) {
-        throw 'Drivername "' + driverParam.drivername + '" is already taken';
+    if (driver.username !== driverParam.username && await Driver.findOne({ username: driverParam.username })) {
+        throw 'Username "' + driverParam.username + '" is already taken';
     }
 
     // hash password if it was entered
