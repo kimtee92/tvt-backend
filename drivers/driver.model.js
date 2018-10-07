@@ -8,7 +8,7 @@ const schema = new Schema({
     lastName: { type: String, required: true },
     gender: { type: String, required: true },
     nationality: { type: String, required: true },
-    licenseNo: { type: String, required: true },
+    licenseNo: { type: String, unique: true, required: true },
     contactNo: { type: String, required: true },
     email: { type: String, required: true },
     address: { type: String, required: true },    
