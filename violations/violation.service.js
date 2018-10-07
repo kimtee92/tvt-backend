@@ -6,24 +6,20 @@ const Violation = db.Violation;
 
 module.exports = {
     getAll,
-    getById,
     getByLicense,
     getByLicenseAll,
     create,
     update,
-    pay
+    pay,
+    issueMany
 };
 
 async function getAll() {
     return await Violation.find().select('-hash');
 }
 
-async function getById(id) {
-    return await Violation.findById(id).select('-hash');
-}
-
 async function getByLicense(ViolationParam) {
-    return await Violation.find({ licenseNo: ViolationParam, settled: false});
+    return await Violation.find({ licenseNo: ViolationParam, settled: false });
 }
 
 async function getByLicenseAll(driverParam) {
@@ -50,5 +46,13 @@ async function update(id, ViolationParam) {
 
 async function pay(id) {
     var res = id.split(",");
-    await Violation.updateMany({ _id: { $in : res }}, { $set: { settled: true }});
+    return await Violation.updateMany({ _id: { $in: res } }, { $set: { settled: true } });
+}
+
+async function issueMany(violations) {
+    console.log(violations);
+    return await Violation.insertMany(violations)
+    .catch(err => {
+        throw console.log(`${err}`);
+    });
 }
