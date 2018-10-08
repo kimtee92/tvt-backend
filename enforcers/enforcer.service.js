@@ -33,10 +33,6 @@ async function getById(id) {
     return await Enforcer.findById(id).select('-hash');
 }
 
-async function getEnforcer(num) {
-    return await Enforcer.findOne({ licenseNo: num });
-}
-
 async function create(enforcerParam) {
     // validate
     if (await Enforcer.findOne({ username: enforcerParam.username })) {
@@ -47,8 +43,8 @@ async function create(enforcerParam) {
         throw 'Email "' + enforcerParam.email + '" is already taken';
     }
 
-    if (await Enforcer.findOne({ licenseNo: enforcerParam.licenseNo })) {
-        throw 'License Number "' + enforcerParam.licenseNo + '" is already taken';
+    if (await Enforcer.findOne({ enforcerNo: enforcerParam.enforcerNo })) {
+        throw 'Enforcer Number "' + enforcerParam.enforcerNo + '" is already taken';
     }
 
     const enforcer = new Enforcer(enforcerParam);
