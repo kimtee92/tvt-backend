@@ -5,7 +5,7 @@ const schema = new Schema({
     licenseNo: { type: String, required: true },
     violation: { type: String, required: true },
     enforcerId: { type: String, required: true },
-    fine: Schema.Types.Decimal128,   
+    fine: { type: Number, required: true },
     remarks: { type: String, required: false }, 
     settled: { type: Boolean, default: false }, 
     createdDate: { type: Date, default: Date.now }
