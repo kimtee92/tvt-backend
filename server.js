@@ -15,6 +15,7 @@ app.use(jwt());
 
 // api routes
 app.use('/drivers', require('./drivers/drivers.controller'));
+app.use('/enforcers', require('./enforcers/enforcers.controller'));
 app.use('/violations', require('./violations/violations.controller'));
 
 // global error handler
